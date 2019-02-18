@@ -12,9 +12,12 @@ export default function Welcome() {
                         className="logo"
                     />
                 </a>
-                <div className="text-container">
-                    <h1>Too broke for Netflix? </h1>
-                    <h2>Watch for movies for free</h2>
+                <div className="landing-text-container">
+                    <h1 className="landing-title">Too broke for Netflix? </h1>
+                    <h2 className="landing-subtitle">
+                        Watch for movies for free
+                    </h2>
+                    <button className="register-button">JOIN NOW</button>
                 </div>
             </section>
         </div>

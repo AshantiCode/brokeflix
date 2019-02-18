@@ -1,3 +1,5 @@
+/* red = #E21221 */
+
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +22,41 @@ body {
 
     background-position: top right;
     background-size: cover;
+    color: #fff;
 }
+button {
+    border-radius: 30px;
+    background-color: #db0510;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.wrapper {
+    padding: 3rem;
+}
+
+/* WELCOME PAGE  */
 .logo {
-    width: 10%;
+    width: 20%;
+}
+
+.landing-text-container {
+    margin-top: 8rem;
+}
+
+.landing-title {
+    font-size: 3.8rem;
+}
+
+.landing-subtitle {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.register-button {
+    margin-top: 0.5rem;
+    width: 15rem;
 }
