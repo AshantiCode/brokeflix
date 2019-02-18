@@ -5,6 +5,12 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        console.log(e);
+        this[e.target.name] = e.target.value;
     }
 
     render() {

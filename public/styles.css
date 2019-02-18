@@ -35,6 +35,12 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+}
+button:hover {
+    background-color: #3f3f3f; /* Green */
+    color: white;
+    transform: translateY(1px);
 }
 
 .wrapper {

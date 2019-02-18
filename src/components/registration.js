@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
+import axios from "../axios";
 
 export default class Registration extends React.Component {
     constructor(props) {
@@ -9,6 +10,33 @@ export default class Registration extends React.Component {
             first: "",
             last: ""
         };
+        this.handleChange = this.handleChange.bind(this);
+        this.submit = this.submit.bind(this);
+    }
+
+    handleChange(e) {
+        this[e.target.name] = e.target.value;
+    }
+
+    async submit() {
+        console.log("Button Clicked");
+        try {
+            let response = await axios.post("/welcome/register", {
+                first: this.first,
+                last: this.last,
+                email: this.email,
+                password: this.password
+            });
+            console.log("Respone: ", response);
+
+            if (response.data.success) {
+                location.replace("/");
+            } else {
+                this.setState({
+                    error: true
+                });
+            }
+        } catch (error) {}
     }
 
     render() {
@@ -38,7 +66,10 @@ export default class Registration extends React.Component {
                     Register
                 </button>
                 <p className="login-offer">
-                    Already a Member? Please <Link to="/login">Log In</Link>
+                    Already a Member? Please{" "}
+                    <Link to="/login" className="no-link-styling">
+                        Log In
+                    </Link>
                 </p>
             </div>
         );
