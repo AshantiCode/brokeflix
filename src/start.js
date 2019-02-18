@@ -4,10 +4,10 @@ import Welcome from "./welcome";
 
 let component;
 
-// if (location.pathname == "/welcome") {
-//     component = <Welcome />;
-// } else {
-//     component = <App />;
-// }
+if (location.pathname == "/") {
+    component = <Welcome />;
+} else {
+    component = <App />;
+}
 
-ReactDOM.render(<Welcome />, document.querySelector("main"));
+ReactDOM.render(component, document.querySelector("main"));
