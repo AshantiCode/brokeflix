@@ -5,7 +5,7 @@ import { HashRouter, Route, Link } from "react-router-dom";
 
 export default function Welcome() {
     return (
-        <div>
+        <div className="landing-background-image">
             <HashRouter>
                 <section className="wrapper">
                     <a href="#">

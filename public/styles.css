@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    background: linear-gradient(
+    /* background: linear-gradient(
             to left,
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 0.9) 100%,
@@ -22,7 +22,7 @@ body {
 
     background-position: top right;
     background-size: cover;
-    color: #fff;
+    color: #fff; */
 }
 button {
     border-radius: 3px;
@@ -43,6 +43,21 @@ button:hover {
     transform: translateY(1px);
 }
 
+.landing-background-image {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.9) 100%,
+            rgba(0, 0, 0, 0.65) 100%
+        ),
+        url("./assets/brokeflix-logo.jpg") no-repeat;
+
+    background-position: top right;
+    background-size: cover;
+    color: #fff;
+}
 .wrapper {
     padding: 3rem;
 }
@@ -102,4 +117,12 @@ label {
     margin-top: 10px;
     padding-left: 10px;
     text-align: left;
+}
+
+/* LOGGED IN /APP.JS */
+.app-background {
+    width: 100vw;
+    height: 100vh;
+    background: #202020;
+    color: #fff;
 }

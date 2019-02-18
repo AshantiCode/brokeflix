@@ -8,7 +8,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='app-background'>
                 <p> Hi You are now logged in and App.js is running</p>
                 <a href="/logout" className="link">
                     <p>Log Out</p>
