@@ -11,7 +11,7 @@ export default function Welcome() {
                     <a href="#">
                         <img
                             src="https://fontmeme.com/permalink/190218/69c7fd6e696a0cbacc1bb2f2f04beb57.png"
-                            alt="netflix-font"
+                            alt="Brokeflix Logo"
                             border="0"
                             className="logo"
                         />

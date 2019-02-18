@@ -1,4 +1,6 @@
 import React from "react";
+import Header from "./components/header";
+import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -8,12 +10,14 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div className='app-background'>
-                <p> Hi You are now logged in and App.js is running</p>
-                <a href="/logout" className="link">
-                    <p>Log Out</p>
-                </a>
-            </div>
+            <BrowserRouter>
+                <div className="app-background">
+                    <Header />
+                    {/* <a href="/logout" className="link">
+                        <p>Log Out</p>
+                    </a> */}
+                </div>
+            </BrowserRouter>
         );
     }
 }

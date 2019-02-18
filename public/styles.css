@@ -97,6 +97,10 @@ button:hover {
 .no-link-styling {
     text-decoration: none;
     color: inherit;
+    transition: color 250ms ease-in-out;
+}
+.no-link-styling:hover {
+    color: #808080;
 }
 
 /* REGISTRATION */
@@ -119,10 +123,41 @@ label {
     text-align: left;
 }
 
-/* LOGGED IN /APP.JS */
+/* LOGGED IN /APP.JS=========================== */
+
+/* HEADER */
+
 .app-background {
     width: 100vw;
     height: 100vh;
     background: #202020;
     color: #fff;
+}
+.header-container {
+    height: 4.375rem;
+    padding: 0 3rem;
+    /* background-color: white; */
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+ul > li {
+    list-style: none;
+    padding-right: 1.5rem;
+}
+.nav-flex-container {
+    display: flex;
+    width: 82%;
+    justify-content: space-between;
+    /* border: 2px solid blue; */
+}
+
+.ul-flex-container {
+    display: flex;
+    align-items: center;
+}
+.header-logo {
+    width: 18%;
+    margin-right: 1.5rem;
 }
