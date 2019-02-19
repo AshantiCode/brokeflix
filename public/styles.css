@@ -134,18 +134,19 @@ label {
 
 .app-background {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     /* height: 100%; */
     background: #202020;
     color: #fff;
 }
 .header-container {
-    height: 4.375rem;
+    height: 4.375rem; /*70px*/
     padding: 3rem;
     /* background-color: white; */
     display: flex;
     align-items: center;
     color: #fff;
+    z-index: 1000;
 }
 
 ul > li {
@@ -209,4 +210,64 @@ ul > li {
 .teaser-box:hover .teaser-description {
     visibility: visible;
     opacity: 1;
+}
+
+/* CAROUSEL ======================*/
+
+#kitties {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.carousel-dots {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    left: 39%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.carousel-dots div {
+    z-index: 10;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.carousel-dots div.fill {
+    background-color: white;
+}
+
+.kitty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.kitty.onscreen {
+    transform: translateX(0);
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.kitty.exit {
+    transform: translateX(-100%);
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.kitty img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
