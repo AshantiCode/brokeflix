@@ -2,6 +2,8 @@ import React from "react";
 import axios from "../axios";
 import HorizontalScroll from "react-scroll-horizontal";
 
+// const API_KEY = AIzaSyCdpPqr0fRxUemGn3zQjYFh - LPVYJdpfgA;
+
 export default class Teaser extends React.Component {
     constructor(props) {
         super(props);
@@ -22,6 +24,7 @@ export default class Teaser extends React.Component {
                 "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLsZQnDqnebk4kN-oGYb2JmTU0ofZHqZTg&key=AIzaSyCdpPqr0fRxUemGn3zQjYFh-LPVYJdpfgA"
             );
 
+            console.log("Response von search.list:", response);
             var teasers = response.data.items;
             console.log("teasers:", teasers);
             this.setState({
