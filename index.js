@@ -80,18 +80,17 @@ app.post("/welcome/register", function(req, res) {
 
 // LOGIN
 app.post("/welcome/login", function(req, res) {
-    console.log("Req.Body in Login: ", req.body);
     const email = req.body.email;
     const password = req.body.password;
 
     db.getUserByEmail(email).then(dbData => {
-        console.log("dbData: ", dbData.rows);
+        // console.log("dbData: ", dbData.rows);
         const hashedPass = dbData.rows[0].hashedpass;
 
         req.session.userId = dbData.rows[0].id;
         req.session.name = `${dbData.rows[0].first} ${dbData.rows[0].last}`;
-        console.log("req session: ", req.session);
 
+        // check password
         return bcrypt
             .comparePassword(password, hashedPass)
             .then(bool => {

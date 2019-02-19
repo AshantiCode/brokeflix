@@ -43,6 +43,7 @@
         "react-redux": "^5.0.5",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
+        "react-scroll-horizontal": "^1.6.2",
         "react-test-renderer": "^16.6.0",
         "redux": "^3.7.1",
         "redux-devtools-extension": "^2.13.2",
