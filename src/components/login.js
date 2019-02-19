@@ -1,16 +1,38 @@
 import React from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
+import axios from "../axios";
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
         this.handleChange = this.handleChange.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     handleChange(e) {
-        console.log(e);
         this[e.target.name] = e.target.value;
+    }
+
+    async submit() {
+        console.log("Submit running");
+        try {
+            const response = await axios.post("/welcome/login", {
+                email: this.email,
+                password: this.password
+            });
+            console.log("Response after Login:", response);
+
+            if (response.data.success) {
+                location.replace("/");
+            } else {
+                this.setState({
+                    error: true
+                });
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     render() {

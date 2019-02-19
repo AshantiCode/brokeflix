@@ -19,3 +19,8 @@ module.exports.registerUser = (first, last, email, hashedPass) => {
         [first, last, email, hashedPass]
     );
 };
+
+//USER LOGIN
+module.exports.getUserByEmail = email => {
+    return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
+};

@@ -36,7 +36,9 @@ export default class Registration extends React.Component {
                     error: true
                 });
             }
-        } catch (error) {}
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     render() {

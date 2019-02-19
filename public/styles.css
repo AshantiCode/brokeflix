@@ -1,4 +1,5 @@
 /* red = #E21221 */
+@import url("https://fonts.googleapis.com/css?family=Kanit:300");
 
 * {
     margin: 0;
@@ -9,6 +10,8 @@
 html {
     min-height: 101%;
     overflow: auto;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 200;
 }
 
 body {
@@ -38,7 +41,8 @@ button {
     transition: background 250ms ease-in-out, transform 150ms ease;
 }
 button:hover {
-    background-color: #3f3f3f; /* Green */
+    /* background-color: #3f3f3f; Green */
+    background-color: #b3b3b3; /* Green */
     color: white;
     transform: translateY(1px);
 }
@@ -52,7 +56,7 @@ button:hover {
             rgba(0, 0, 0, 0.9) 100%,
             rgba(0, 0, 0, 0.65) 100%
         ),
-        url("./assets/brokeflix-logo.jpg") no-repeat;
+        url("./assets/preview.jpg") no-repeat;
 
     background-position: top right;
     background-size: cover;
@@ -135,7 +139,7 @@ label {
 }
 .header-container {
     height: 4.375rem;
-    padding: 0 3rem;
+    padding: 3rem;
     /* background-color: white; */
     display: flex;
     align-items: center;
@@ -145,6 +149,7 @@ label {
 ul > li {
     list-style: none;
     padding-right: 1.5rem;
+    font-size: 0.875rem;
 }
 .nav-flex-container {
     display: flex;
