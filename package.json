@@ -55,7 +55,8 @@
         "uid-safe": "^2.1.4",
         "webpack": "^1.14.0",
         "webpack-dev-middleware": "^1.8.4",
-        "youtube-api-v3-search": "^1.2.1"
+        "youtube-api-v3-search": "^1.2.1",
+        "youtube-search": "^1.1.4"
     },
     "keywords": [],
     "author": "",

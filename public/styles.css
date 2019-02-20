@@ -196,9 +196,12 @@ ul > li {
     /* width: 200px; */
     /* min-width: 200px; */
     /* position: absolute; */
+    /* width: 100px;
+    height: 130px; */
     position: relative;
     padding: 0.2rem;
     display: inline-block;
+    cursor: pointer;
     /* border: 1px solid red; */
 }
 .teaser-description {
@@ -219,6 +222,9 @@ ul > li {
     visibility: visible;
     opacity: 1;
 }
+/* .teaser-image {
+    width: 100%;
+} */
 
 /* CAROUSEL ======================*/
 

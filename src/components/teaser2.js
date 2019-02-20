@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "../axios";
-
-import YTSearch from "youtube-api-v3-search";
+import search from "youtube-search";
+import { Link } from "react-router-dom";
 
 const API_KEY = "AIzaSyBTB5tzRBATe1r4_VjQShi9jGyTRd6YfwM";
 
@@ -17,18 +17,16 @@ export default class Teaser extends React.Component {
 
     componentDidMount() {
         this.searchYT({
-            q: `${this.props.genre}`,
-            part: "snippet",
-            type: "video",
-            maxResults: "2"
+            maxResults: "1",
+            key: "AIzaSyBTB5tzRBATe1r4_VjQShi9jGyTRd6YfwM"
         });
     }
 
     async searchYT(options) {
         try {
-            const response = await YTSearch(API_KEY, options);
-            console.log(response.items);
-            let teasers = response.items;
+            const response = await search(`${this.props.genre}`, options);
+            console.log("REsponse:", response);
+            let teasers = response.results;
             this.setState({
                 teasers
             });
@@ -42,18 +40,24 @@ export default class Teaser extends React.Component {
             return null;
         }
         const { teasers } = this.state;
-        console.log("TEASERS in REnder:", teasers);
+        console.log("TEASERS in Render:", teasers);
 
         const teaserList = (
             <div className="teasers-list">
                 {teasers.map(teaser => {
                     return (
-                        <div key={teaser.id} className="teaser-box">
-                            <img src={teaser.snippet.thumbnails.medium.url} />
-                            <p className="teaser-description">
-                                {teaser.snippet.title}
-                            </p>
-                        </div>
+                        <Link to="/player">
+                            <div
+                                key={teaser.id}
+                                className="teaser-box"
+                                onClick=""
+                            >
+                                <img src={teaser.thumbnails.medium.url} />
+                                <p className="teaser-description">
+                                    {teaser.title}
+                                </p>
+                            </div>
+                        </Link>
                     );
                 })}
             </div>
