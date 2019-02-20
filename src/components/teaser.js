@@ -4,12 +4,12 @@ import axios from "../axios";
 import YTSearch from "youtube-api-v3-search";
 
 const API_KEY = "AIzaSyCdpPqr0fRxUemGn3zQjYFh-LPVYJdpfgA";
-const options = {
-    q: "full movie drama",
-    part: "snippet",
-    type: "video",
-    maxResults: "10"
-};
+// const options = {
+//     q: {this.props.genre},
+//     part: "snippet",
+//     type: "video",
+//     maxResults: "10"
+// };
 
 export default class Teaser extends React.Component {
     constructor(props) {
@@ -22,7 +22,12 @@ export default class Teaser extends React.Component {
     }
 
     componentDidMount() {
-        this.searchYT(options);
+        this.searchYT({
+            q: `${this.props.genre}`,
+            part: "snippet",
+            type: "video",
+            maxResults: "10"
+        });
     }
 
     async searchYT(options) {
@@ -62,7 +67,10 @@ export default class Teaser extends React.Component {
 
         return (
             <div>
-                <div className="teaser-list-container">{teaserList}</div>
+                <div className="teaser-list-container">
+                    <p>{this.props.category}</p>
+                    {teaserList}
+                </div>
             </div>
         );
     }

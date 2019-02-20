@@ -135,7 +135,8 @@ label {
 .app-background {
     width: 100vw;
     /* height: 100vh; */
-    /* height: 100%; */
+    /* position: fixed; */
+    height: 100%;
     background: #202020;
     color: #fff;
 }
@@ -177,15 +178,18 @@ ul > li {
     overflow-x: auto;
     min-width: 100%;
     min-width: 200px;
-    margin-top: 7rem;
+    /* margin-top: 7rem; */
     display: flex;
     border: 1px solif white;
 }
 .teasers-list::-webkit-scrollbar {
     display: none;
 }
-.teaser-list-container::before {
+/* .teaser-list-container::before {
     content: "Drama";
+} */
+.teaser-list-container {
+    margin-top: 130px;
 }
 
 .teaser-box {

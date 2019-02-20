@@ -19,7 +19,15 @@ export default class App extends React.Component {
                         <Header />
                     </Sticky>
                     <Carousel />
-                    <Teaser />
+                    <Teaser genre={"full movie drama"} category={"Drama"} />
+                    <Teaser genre={"full movie comedy"} category={"Comedy"} />
+                    <Teaser genre={"full movie action"} category={"Action"} />
+                    <Teaser genre={"full movie romance"} category={"Romance"} />
+                    <Teaser
+                        genre={"full movie for kids"}
+                        category={"For Kids"}
+                    />
+                    <Teaser genre={"full movie family"} category={"Family"} />
                 </div>
             </BrowserRouter>
         );
