@@ -1,8 +1,15 @@
 import React from "react";
 import axios from "../axios";
-import HorizontalScroll from "react-scroll-horizontal";
 
-// const API_KEY = AIzaSyCdpPqr0fRxUemGn3zQjYFh - LPVYJdpfgA;
+import YTSearch from "youtube-api-v3-search";
+
+const API_KEY = "AIzaSyCdpPqr0fRxUemGn3zQjYFh-LPVYJdpfgA";
+const options = {
+    q: "full movie drama",
+    part: "snippet",
+    type: "video",
+    maxResults: "10"
+};
 
 export default class Teaser extends React.Component {
     constructor(props) {
@@ -11,26 +18,21 @@ export default class Teaser extends React.Component {
             teasers: []
         };
 
-        this.getChannels = this.getChannels.bind(this);
+        this.searchYT = this.searchYT.bind(this);
     }
 
     componentDidMount() {
-        this.getChannels();
+        this.searchYT(options);
     }
 
-    async getChannels() {
+    async searchYT(options) {
         try {
-            const response = await axios.get(
-                "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLsZQnDqnebk4kN-oGYb2JmTU0ofZHqZTg&key=AIzaSyCdpPqr0fRxUemGn3zQjYFh-LPVYJdpfgA"
-            );
-
-            console.log("Response von search.list:", response);
-            var teasers = response.data.items;
-            console.log("teasers:", teasers);
+            const response = await YTSearch(API_KEY, options);
+            console.log(response.items);
+            let teasers = response.items;
             this.setState({
                 teasers
             });
-            console.log("State:", this.state);
         } catch (error) {
             console.log(error.message);
         }
@@ -60,7 +62,7 @@ export default class Teaser extends React.Component {
 
         return (
             <div>
-                <div>{teaserList}</div>
+                <div className="teaser-list-container">{teaserList}</div>
             </div>
         );
     }

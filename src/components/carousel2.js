@@ -17,7 +17,7 @@ export default class Carousel extends React.Component {
             kitty[current].classList.remove("onscreen");
             dot[current].classList.remove("fill");
             kitty[current].classList.add("exit");
-            console.log("the current  one is " + current);
+            // console.log("the current  one is " + current);
 
             // if ( typeof next == "undefined") {
 

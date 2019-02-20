@@ -184,6 +184,10 @@ ul > li {
 .teasers-list::-webkit-scrollbar {
     display: none;
 }
+.teaser-list-container::before {
+    content: "Drama";
+}
+
 .teaser-box {
     /* width: 200px; */
     /* min-width: 200px; */
