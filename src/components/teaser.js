@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "../axios";
+import { Link } from "react-router-dom";
 
 import YTSearch from "youtube-api-v3-search";
 
@@ -20,7 +21,7 @@ export default class Teaser extends React.Component {
             q: `${this.props.genre}`,
             part: "snippet",
             type: "video",
-            maxResults: "2"
+            maxResults: "1"
         });
     }
 
@@ -48,12 +49,19 @@ export default class Teaser extends React.Component {
             <div className="teasers-list">
                 {teasers.map(teaser => {
                     return (
-                        <div key={teaser.id} className="teaser-box">
-                            <img src={teaser.snippet.thumbnails.medium.url} />
-                            <p className="teaser-description">
-                                {teaser.snippet.title}
-                            </p>
-                        </div>
+                        <Link
+                            to="/player"
+                            onClick={() => this.props.setPlayerUrl(teaser.Link)}
+                        >
+                            <div key={teaser.id} className="teaser-box">
+                                <img
+                                    src={teaser.snippet.thumbnails.medium.url}
+                                />
+                                <p className="teaser-description">
+                                    {teaser.snippet.title}
+                                </p>
+                            </div>
+                        </Link>
                     );
                 })}
             </div>

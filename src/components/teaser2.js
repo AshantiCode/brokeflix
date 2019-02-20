@@ -1,7 +1,9 @@
 import React from "react";
+// import Player from "./component/player";
 import axios from "../axios";
-import search from "youtube-search";
 import { Link } from "react-router-dom";
+
+import search from "youtube-search";
 
 const API_KEY = "AIzaSyBTB5tzRBATe1r4_VjQShi9jGyTRd6YfwM";
 
@@ -30,6 +32,7 @@ export default class Teaser extends React.Component {
             this.setState({
                 teasers
             });
+            return;
         } catch (error) {
             console.log(error.message);
         }
@@ -46,12 +49,11 @@ export default class Teaser extends React.Component {
             <div className="teasers-list">
                 {teasers.map(teaser => {
                     return (
-                        <Link to="/player">
-                            <div
-                                key={teaser.id}
-                                className="teaser-box"
-                                onClick=""
-                            >
+                        <Link
+                            to="/player"
+                            onClick={() => this.props.setPlayerUrl(teaser.link)}
+                        >
+                            <div key={teaser.id} className="teaser-box">
                                 <img src={teaser.thumbnails.medium.url} />
                                 <p className="teaser-description">
                                     {teaser.title}
