@@ -119,6 +119,8 @@ app.get("/logout", (req, res) => {
 
 //THESE 2 ALWAYS WILL COME LAST   ===========================================
 app.get("/welcome", function(req, res) {
+    console.log("reqSession:", req.session);
+    console.log("If/Else running?");
     if (req.session.userId) {
         res.redirect("/");
     } else {
@@ -127,7 +129,13 @@ app.get("/welcome", function(req, res) {
 });
 
 app.get("*", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    console.log("Star running?");
+    console.log("reqSession in STAR:", req.session);
+    if (!req.session.userId) {
+        res.redirect("/welcome");
+    } else {
+        res.sendFile(__dirname + "/index.html");
+    }
 });
 
 // SERVER   ================================================

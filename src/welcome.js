@@ -4,6 +4,9 @@ import Login from "./components/login";
 import { HashRouter, Route, Link } from "react-router-dom";
 
 export default function Welcome() {
+    // let landingGreeting = document.getElementById("landing-greeting");
+    // landingGreeting.style.display = "block";
+
     return (
         <div className="landing-background-image">
             <HashRouter>
@@ -17,10 +20,16 @@ export default function Welcome() {
                         />
                     </a>
                     <Link to="/login">
-                        <button className="signin-button">Sign In</button>
+                        <button className="signin-button" id="sign-in-btn">
+                            Sign In
+                        </button>
                     </Link>
                     <div className="landing-wrapper">
-                        <div className="landing-text-container">
+                        <div
+                            style={{ display: "block" }}
+                            className="landing-text-container"
+                            id="landing-greeting"
+                        >
                             <h1 className="landing-title">
                                 Too broke for Netflix?{" "}
                             </h1>

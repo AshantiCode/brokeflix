@@ -3,6 +3,9 @@ import Header from "./components/header";
 import Teaser from "./components/teaser";
 import Carousel from "./components/carousel2";
 import VideoPlayer from "./components/videoPlayer";
+import Movies from "./components/movies";
+import TvShows from "./components/tvShows";
+
 import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 
 export default class App extends React.Component {
@@ -13,9 +16,11 @@ export default class App extends React.Component {
         this.setPlayerUrl = this.setPlayerUrl.bind(this);
     }
 
-    setPlayerUrl(url) {
+    setPlayerUrl(url, description, title) {
         this.setState({
-            playerUrl: url
+            playerUrl: url,
+            description,
+            title
         });
     }
 
@@ -31,19 +36,31 @@ export default class App extends React.Component {
                         render={() => (
                             <div>
                                 <Carousel />
-                                <Teaser
+                                {/* <Teaser
                                     setPlayerUrl={this.setPlayerUrl}
                                     genre={"full movie drama"}
                                     category={"Drama"}
                                 />
-                                {/* <Teaser genre={"full movie comedy"} category={"Comedy"} />
-                        <Teaser genre={"full movie action"} category={"Action"} />
-                        <Teaser genre={"full movie romance"} category={"Romance"} />
-                        <Teaser
-                            genre={"full movie for kids"}
-                            category={"For Kids"}
-                        />
-                        <Teaser genre={"full movie family"} category={"Family"} />  */}
+                                <Teaser 
+                                setPlayerUrl={this.setPlayerUrl} 
+                                genre={"full movie comedy"} 
+                                category={"Comedy"} 
+                                />
+                                
+                                <Teaser 
+                                setPlayerUrl={this.setPlayerUrl} 
+                                genre={"full movie romance"} 
+                                category={"Romance"} 
+                                />
+                                <Teaser 
+                                setPlayerUrl={this.setPlayerUrl}
+                                genre={"full movie for kids"}
+                                category={"For Kids"}
+                                />
+                                <Teaser 
+                                setPlayerUrl={this.setPlayerUrl} 
+                                genre={"full movie family"} 
+                                category={"Family"} />  */}
                             </div>
                         )}
                     />
@@ -53,10 +70,17 @@ export default class App extends React.Component {
                         path="/player"
                         render={() => {
                             return (
-                                <VideoPlayer playerUrl={this.state.playerUrl} />
+                                <VideoPlayer
+                                    playerUrl={this.state.playerUrl}
+                                    description={this.state.description}
+                                    title={this.state.title}
+                                />
                             );
                         }}
                     />
+
+                    {/* <Route exact path="/movies" component={Movies} /> */}
+                    <Route exact path="/shows" component={TvShows} />
                 </div>
             </BrowserRouter>
         );

@@ -37,30 +37,40 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div className="registration-form">
-                <h1>Please Log In!</h1>
-                {this.state.error && (
-                    <div className="error">
-                        Oops! Something went wrong,please try again!
+            <div className="register-container">
+                <div className="registration-form">
+                    {this.state.error && (
+                        <div className="error">
+                            Oops! Something went wrong,please try again!
+                        </div>
+                    )}
+                    <div className="register-input-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            name="email"
+                            id="email"
+                            onChange={this.handleChange}
+                        />
+
+                        <label htmlFor="password">Password</label>
+                        <input
+                            name="password"
+                            id="password"
+                            onChange={this.handleChange}
+                        />
+
+                        <button className="login-btn" onClick={this.submit}>
+                            Log In
+                        </button>
+                        <Link
+                            to="/register"
+                            className="register-offer no-link-styling"
+                            id="back-register-link"
+                        >
+                            Back to Registration
+                        </Link>
                     </div>
-                )}
-
-                <label htmlFor="email">Email</label>
-                <input name="email" id="email" onChange={this.handleChange} />
-
-                <label htmlFor="password">Password</label>
-                <input
-                    name="password"
-                    id="password"
-                    onChange={this.handleChange}
-                />
-
-                <button className="login-btn" onClick={this.submit}>
-                    Log In
-                </button>
-                <Link to="/" className="register-offer">
-                    Back to Registration
-                </Link>
+                </div>
             </div>
         );
     }

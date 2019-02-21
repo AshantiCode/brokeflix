@@ -21,7 +21,7 @@ export default class Teaser extends React.Component {
             q: `${this.props.genre}`,
             part: "snippet",
             type: "video",
-            maxResults: "1"
+            maxResults: "10"
         });
     }
 
@@ -48,18 +48,27 @@ export default class Teaser extends React.Component {
         const teaserList = (
             <div className="teasers-list">
                 {teasers.map(teaser => {
+                    //cuts  i.e (subtitle Mexican) off
+                    let title = teaser.snippet.title;
+                    let pos = title.lastIndexOf("(");
+                    title = title.substr(0, pos);
+
                     return (
                         <Link
                             to="/player"
-                            onClick={() => this.props.setPlayerUrl(teaser.Link)}
+                            onClick={() =>
+                                this.props.setPlayerUrl(
+                                    teaser.id.videoId,
+                                    teaser.snippet.description,
+                                    title
+                                )
+                            }
                         >
                             <div key={teaser.id} className="teaser-box">
                                 <img
                                     src={teaser.snippet.thumbnails.medium.url}
                                 />
-                                <p className="teaser-description">
-                                    {teaser.snippet.title}
-                                </p>
+                                <p className="teaser-description">{title}</p>
                             </div>
                         </Link>
                     );

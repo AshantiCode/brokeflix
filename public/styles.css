@@ -15,6 +15,8 @@ html {
 }
 
 body {
+    background: #202020;
+    color: #fff;
     /* background: linear-gradient(
             to left,
             rgba(0, 0, 0, 0) 0%,
@@ -95,7 +97,10 @@ button:hover {
     width: 15rem;
 }
 .signin-button {
-    float: right;
+    position: absolute;
+    top: 55px;
+    right: 71px;
+    /* float: right; */
 
     padding: 0.625rem 1.25rem;
 }
@@ -109,11 +114,37 @@ button:hover {
 }
 
 /* REGISTRATION */
+.register-container {
+    border-radius: 15px;
+    margin-left: 60%;
+    /* width: 373px;
+    position: relative;
+    bottom: -145px;
+    left: 90%; */
+}
 .registration-form {
+    margin-left: 400px;
+    width: 500px;
+    height: 493px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.7);
+}
+.register-input-group {
+    margin-top: 62px;
+    display: flex;
+    flex-direction: column;
+    /* align-self: center; */
+}
+
+/* LOGIN  */
+#back-register-link {
+    margin-top: 2rem;
+}
+.login-btn {
+    margin-top: 2rem;
 }
 input {
     width: 250px;
@@ -134,9 +165,9 @@ label {
 
 .app-background {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     /* position: fixed; */
-    /* height: 100%; */
+    height: 100%;
     background: #202020;
     color: #fff;
 }
@@ -287,6 +318,52 @@ ul > li {
 }
 
 /* PLAYER  */
-.center-player {
-    text-align: center;
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3.125rem; /*50px*/
+}
+.video-description {
+    width: 250px;
+}
+.video-title {
+    margin-bottom: 1.25rem; /*20px*/
+    color: #db1b28;
+    font-size: 1.7rem;
+}
+svg {
+    fill: white;
+}
+
+/* === MOVIES ==== */
+.movie-list {
+    margin-left: 3rem;
+}
+.movie-card {
+    position: relative;
+    padding: 0.2rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.movie-details {
+    position: absolute;
+    top: -130px;
+    /* top: 0; */
+    /* bottom: 0; */
+    left: 0;
+    /* right: 0; */
+    right: -114px;
+    padding: 3rem;
+    font-size: 1.3rem;
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 500ms ease-out;
+}
+
+.movie-card:hover .movie-details {
+    visibility: visible;
+    opacity: 1;
 }
