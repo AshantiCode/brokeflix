@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "../axios";
+import Movies from "./movies";
 
 export default class TvShows extends React.Component {
     constructor(props) {
@@ -29,6 +30,29 @@ export default class TvShows extends React.Component {
     }
 
     render() {
-        if ()
+        if (this.state.shows.length < 1) {
+            return null;
+        }
+
+        const { shows } = this.state;
+        const baseUrl = "https://image.tmdb.org/t/p/w200";
+
+        const showList = (
+            <div>
+                {shows.map(show => {
+                    return (
+                        <div key={show.id} className="movie-card">
+                            <img src={`${baseUrl}${show.poster_path}`} />
+                            <div className="movie-details">
+                                <h3>{show.name}</h3>
+                                <p>{show.overview}</p>
+                                <p>{show.vote_average}</p>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+        return <div className="movie-list">{showList}</div>;
     }
 }
