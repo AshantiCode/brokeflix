@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "../axios";
+import Heart from './heart';
 
 export default class Movies extends React.Component {
     constructor(props) {
@@ -9,10 +10,12 @@ export default class Movies extends React.Component {
         };
 
         this.getMovies = this.getMovies.bind(this);
+        this.toggleFavorite = this.toggleFavorite.bind(this);
+        this.addToFavorite = this.addToFavorite.bind(this);
     }
 
     componentDidMount() {
-        // this.getMovies();
+        this.getMovies();
     }
 
     async getMovies() {
@@ -30,6 +33,18 @@ export default class Movies extends React.Component {
         }
     }
 
+    toggleFavorite () {
+        setState({
+            favorite: !this.state.favorite
+        })
+    }
+    
+    addToFavorite(userId, video) {
+        this.setState({
+
+        })
+    }
+
     render() {
         if (this.state.movies.length < 1) {
             return null;
@@ -41,12 +56,13 @@ export default class Movies extends React.Component {
             <div>
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} className="movie-card">
+                        <div key={movie.id} className="item-card">
                             <img src={`${baseUrl}${movie.poster_path}`} />
-                            <div className="movie-details">
-                                <h2>{movie.title}</h2>
-                                <p>{movie.overview}</p>
-                                <p>{movie.vote_average}</p>
+                            <div className="item-details">
+                                <h2 className='item-title'>{movie.title}</h2>
+                                <Heart onClick={this.addToFavorite}/>
+                                <p className='item-description'>{movie.overview}</p>
+                                <p className='item-voting'>{movie.vote_average}</p>
                             </div>
                         </div>
                     );
@@ -54,6 +70,6 @@ export default class Movies extends React.Component {
             </div>
         );
 
-        return <div className="movie-list">{movieList}</div>;
+        return <div className="item-list">{movieList}</div>;
     }
 }

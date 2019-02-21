@@ -7,11 +7,12 @@ export default class TvShows extends React.Component {
         super(props);
         this.state = {
             shows: []
+            
         };
     }
 
     componentDidMount() {
-        this.getTvShows();
+        // this.getTvShows();
     }
 
     async getTvShows() {
@@ -30,6 +31,8 @@ export default class TvShows extends React.Component {
     }
 
     render() {
+        
+
         if (this.state.shows.length < 1) {
             return null;
         }
@@ -41,18 +44,20 @@ export default class TvShows extends React.Component {
             <div>
                 {shows.map(show => {
                     return (
-                        <div key={show.id} className="movie-card">
+                        <div key={show.id} className="item-card">
                             <img src={`${baseUrl}${show.poster_path}`} />
-                            <div className="movie-details">
-                                <h3>{show.name}</h3>
-                                <p>{show.overview}</p>
-                                <p>{show.vote_average}</p>
+                            <div className="item-details">
+                                <h2 className="item-title">{show.name}</h2>
+                                <p className="item-description">
+                                    {show.overview}
+                                </p>
+                                <p className='item-voting'>{show.vote_average}</p>
                             </div>
                         </div>
                     );
                 })}
             </div>
         );
-        return <div className="movie-list">{showList}</div>;
+        return <div className="item-list">{showList}</div>;
     }
 }

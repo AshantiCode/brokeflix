@@ -21,14 +21,15 @@ export default class Teaser extends React.Component {
             q: `${this.props.genre}`,
             part: "snippet",
             type: "video",
-            maxResults: "10"
+            maxResults: "3"
         });
     }
 
     async searchYT(options) {
         try {
             const response = await YTSearch(API_KEY, options);
-            console.log(response.items);
+            console.log("Response.items:", response.items);
+
             let teasers = response.items;
             this.setState({
                 teasers
@@ -43,15 +44,18 @@ export default class Teaser extends React.Component {
             return null;
         }
         const { teasers } = this.state;
-        console.log("TEASERS in REnder:", teasers);
+        console.log("Teasers in Render:", teasers);
 
         const teaserList = (
             <div className="teasers-list">
                 {teasers.map(teaser => {
                     //cuts  i.e (subtitle Mexican) off
                     let title = teaser.snippet.title;
-                    let pos = title.lastIndexOf("(");
-                    title = title.substr(0, pos);
+
+                    if (title.indexOf("(", 0) > -1) {
+                        let pos = title.lastIndexOf("(");
+                        title = title.substr(0, pos);
+                    }
 
                     return (
                         <Link
@@ -64,7 +68,7 @@ export default class Teaser extends React.Component {
                                 )
                             }
                         >
-                            <div key={teaser.id} className="teaser-box">
+                            <div key={teaser.etag} className="teaser-box">
                                 <img
                                     src={teaser.snippet.thumbnails.medium.url}
                                 />

@@ -12,25 +12,42 @@ export default function Header(props) {
                 <nav>
                     <ul className="ul-flex-container">
                         <li>
-                            <Link to="/" className="no-link-styling">
+                            <Link
+                                to="/"
+                                className="no-link-styling"
+                                onClick={props.toggleActiveLink}
+                            >
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link to="/movies" className="no-link-styling">
+                            <Link
+                                to="/movies"
+                                className="no-link-styling"
+                                onClick={props.toggleActiveLink}
+                            >
                                 Movies
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/shows" className="no-link-styling">
+                        <li id="tv-show">
+                            <Link
+                                to="/shows"
+                                className="no-link-styling"
+                                onClick={props.toggleActiveLink}
+                            >
                                 TV-Shows
                             </Link>
                         </li>
                         <li>
-                            <Link to="/favorites" className="no-link-styling">
+                            <Link
+                                to="/favorites"
+                                className="no-link-styling"
+                                onClick={props.toggleActiveLink}
+                            >
                                 Favorites
                             </Link>
                         </li>
+                        
                     </ul>
                 </nav>
 

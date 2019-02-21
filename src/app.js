@@ -5,6 +5,7 @@ import Carousel from "./components/carousel2";
 import VideoPlayer from "./components/videoPlayer";
 import Movies from "./components/movies";
 import TvShows from "./components/tvShows";
+import Heart from "./components/heart";
 
 import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 
@@ -14,6 +15,7 @@ export default class App extends React.Component {
         this.state = {};
 
         this.setPlayerUrl = this.setPlayerUrl.bind(this);
+        this.toggleActiveLink = this.toggleActiveLink.bind(this);
     }
 
     setPlayerUrl(url, description, title) {
@@ -24,11 +26,27 @@ export default class App extends React.Component {
         });
     }
 
+    toggleActiveLink(e) {
+        let links = document.querySelectorAll(".active");
+        [].forEach.call(links, function(link) {
+            link.classList.remove("active");
+            link.classList.add("no-link-styling");
+        });
+        e.target.className = "active";
+    }
+
+    addToFavorite(userId, video) {
+        this.setState({
+            video,
+            favorite: true
+        })
+    }
+
     render() {
         return (
             <BrowserRouter>
                 <div className="app-background">
-                    <Header />
+                    <Header toggleActiveLink={this.toggleActiveLink} />
 
                     <Route
                         exact
@@ -36,18 +54,18 @@ export default class App extends React.Component {
                         render={() => (
                             <div>
                                 <Carousel />
-                                {/* <Teaser
+                                <Teaser
                                     setPlayerUrl={this.setPlayerUrl}
                                     genre={"full movie drama"}
                                     category={"Drama"}
                                 />
-                                <Teaser 
-                                setPlayerUrl={this.setPlayerUrl} 
-                                genre={"full movie comedy"} 
-                                category={"Comedy"} 
+                                <Teaser
+                                    setPlayerUrl={this.setPlayerUrl}
+                                    genre={"full movie comedy"}
+                                    category={"Comedy"}
                                 />
-                                
-                                <Teaser 
+
+                                {/* <Teaser 
                                 setPlayerUrl={this.setPlayerUrl} 
                                 genre={"full movie romance"} 
                                 category={"Romance"} 
@@ -79,8 +97,9 @@ export default class App extends React.Component {
                         }}
                     />
 
-                    {/* <Route exact path="/movies" component={Movies} /> */}
+                    <Route exact path="/movies" component={Movies} />
                     <Route exact path="/shows" component={TvShows} />
+            
                 </div>
             </BrowserRouter>
         );

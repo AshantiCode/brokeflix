@@ -202,6 +202,15 @@ ul > li {
     margin-right: 1.5rem;
 }
 
+.active {
+    color: #db1b28;
+    font-size: 1.1rem;
+
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 500ms ease-in;
+}
+
 /* TEASER  */
 .teasers-list {
     /* width: 600px;
@@ -318,7 +327,7 @@ ul > li {
 }
 
 /* PLAYER  */
-.flex-container {
+.player-flex-container {
     display: flex;
     justify-content: space-evenly;
     margin-top: 3.125rem; /*50px*/
@@ -336,34 +345,40 @@ svg {
 }
 
 /* === MOVIES ==== */
-.movie-list {
+.item-list {
+    margin-top: 3rem;
     margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
 }
-.movie-card {
-    position: relative;
-    padding: 0.2rem;
-    display: inline-block;
-    cursor: pointer;
+.item-card {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
 }
 
-.movie-details {
-    position: absolute;
-    top: -130px;
-    /* top: 0; */
-    /* bottom: 0; */
-    left: 0;
-    /* right: 0; */
-    right: -114px;
-    padding: 3rem;
-    font-size: 1.3rem;
-    background: rgba(0, 0, 0, 0.72);
-    color: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 500ms ease-out;
+.item-details {
+    width: 50%;
+}
+.item-title {
+    margin-bottom: 1.25rem;
+    color: #db1b28;
+}
+.item-description {
+    line-height: 1.5;
+}
+.item-voting {
+    color: #db1b28;
 }
 
 .movie-card:hover .movie-details {
-    visibility: visible;
-    opacity: 1;
+}
+
+/* FAVORITES  */
+.favorite-heart {
+    margin-left: 3rem;
+   
+    position: relative;
+    top: 10px;
+    cursor: pointer;
 }
