@@ -35,13 +35,6 @@ export default class App extends React.Component {
         e.target.className = "active";
     }
 
-    addToFavorite(userId, video) {
-        this.setState({
-            video,
-            favorite: true
-        })
-    }
-
     render() {
         return (
             <BrowserRouter>
@@ -99,7 +92,6 @@ export default class App extends React.Component {
 
                     <Route exact path="/movies" component={Movies} />
                     <Route exact path="/shows" component={TvShows} />
-            
                 </div>
             </BrowserRouter>
         );

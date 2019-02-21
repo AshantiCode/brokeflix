@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "../axios";
-import Heart from './heart';
+import Heart from "./heart";
 
 export default class Movies extends React.Component {
     constructor(props) {
@@ -10,12 +10,13 @@ export default class Movies extends React.Component {
         };
 
         this.getMovies = this.getMovies.bind(this);
-        this.toggleFavorite = this.toggleFavorite.bind(this);
+        // this.toggleFavorite = this.toggleFavorite.bind(this);
         this.addToFavorite = this.addToFavorite.bind(this);
+        this.saveFavorite = this.saveFavorite.bind(this);
     }
 
     componentDidMount() {
-        this.getMovies();
+        // this.getMovies();
     }
 
     async getMovies() {
@@ -33,16 +34,24 @@ export default class Movies extends React.Component {
         }
     }
 
-    toggleFavorite () {
-        setState({
-            favorite: !this.state.favorite
-        })
-    }
-    
-    addToFavorite(userId, video) {
+    addToFavorite(video) {
         this.setState({
+            video,
+            favorite: !this.state.favorite
+        });
 
-        })
+        this.saveFavorite(video);
+    }
+
+    async saveFavorite() {
+        try {
+            const response = await axios.post("/user/favorites", {
+                video: this.state.video
+            });
+            console.log("response Love:", response);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     render() {
@@ -59,10 +68,17 @@ export default class Movies extends React.Component {
                         <div key={movie.id} className="item-card">
                             <img src={`${baseUrl}${movie.poster_path}`} />
                             <div className="item-details">
-                                <h2 className='item-title'>{movie.title}</h2>
-                                <Heart onClick={this.addToFavorite}/>
-                                <p className='item-description'>{movie.overview}</p>
-                                <p className='item-voting'>{movie.vote_average}</p>
+                                <h2 className="item-title">{movie.title}</h2>
+                                <Heart
+                                    onClick={this.addToFavorite(movie.id)}
+                                    favorite={this.state.favorite}
+                                />
+                                <p className="item-description">
+                                    {movie.overview}
+                                </p>
+                                <p className="item-voting">
+                                    {movie.vote_average}
+                                </p>
                             </div>
                         </div>
                     );

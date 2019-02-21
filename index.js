@@ -111,6 +111,10 @@ app.post("/welcome/login", function(req, res) {
     });
 });
 
+app.post("/user/favorites", function(req, res) {
+    console.log("Req.Body in Favorites:", req.body);
+});
+
 // LOGOUT
 app.get("/logout", (req, res) => {
     req.session = null;
