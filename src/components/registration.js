@@ -18,12 +18,19 @@ export default class Registration extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
+    componentWillMount() {
+        let signInButton = document.getElementById("sign-in-btn");
+        signInButton.style.display = "none";
+
+        let landingGreeting = document.getElementById("landing-greeting");
+        landingGreeting.style.display = "none";
+    }
+
     handleChange(e) {
         this[e.target.name] = e.target.value;
     }
 
     async submit() {
-        console.log("Button Clicked");
         try {
             let response = await axios.post("/welcome/register", {
                 first: this.first,
@@ -47,11 +54,11 @@ export default class Registration extends React.Component {
 
     render() {
         // hide Greeting + Sign in Button while Form is displayed
-        let signInButton = document.getElementById("sign-in-btn");
-        signInButton.style.display = "none";
+        // let signInButton = document.getElementById("sign-in-btn");
+        // signInButton.style.display = "none";
 
-        let landingGreeting = document.getElementById("landing-greeting");
-        landingGreeting.style.display = "none";
+        // let landingGreeting = document.getElementById("landing-greeting");
+        // landingGreeting.style.display = "none";
 
         return (
             <div className="register-container">
@@ -96,8 +103,8 @@ export default class Registration extends React.Component {
                         </button>
                         <p className="login-offer">
                             Already a Member? Please{" "}
-                            <Link to="/login" className="no-link-styling">
-                                Log In
+                            <Link to="/login" className="no-link-styling ">
+                                <span>Log In</span>
                             </Link>
                         </p>
                     </div>

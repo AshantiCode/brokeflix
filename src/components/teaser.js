@@ -17,12 +17,12 @@ export default class Teaser extends React.Component {
     }
 
     componentDidMount() {
-        this.searchYT({
-            q: `${this.props.genre}`,
-            part: "snippet",
-            type: "video",
-            maxResults: "3"
-        });
+        // this.searchYT({
+        //     q: `${this.props.genre}`,
+        //     part: "snippet",
+        //     type: "video",
+        //     maxResults: "3"
+        // });
     }
 
     async searchYT(options) {

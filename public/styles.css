@@ -17,6 +17,7 @@ html {
 body {
     background: #202020;
     color: #fff;
+    letter-spacing: 0.1rem;
     /* background: linear-gradient(
             to left,
             rgba(0, 0, 0, 0) 0%,
@@ -29,6 +30,9 @@ body {
     background-size: cover;
     color: #fff; */
 }
+
+/* ====  GENERAL =========
+ */
 button {
     border-radius: 3px;
     background-color: #db0510;
@@ -44,9 +48,22 @@ button {
 }
 button:hover {
     /* background-color: #3f3f3f; Green */
-    background-color: #b3b3b3; /* Green */
+    background-color: #333333; /* Green */
     color: white;
     transform: translateY(1px);
+}
+.no-link-styling {
+    text-decoration: none;
+    color: inherit;
+    transition: all 1s ease-in-out;
+}
+.no-link-styling:hover .no-link-styling:hover span {
+    color: #808080;
+    transform: translateY(1px);
+}
+
+span {
+    color: #db0510;
 }
 
 .landing-background-image {
@@ -91,9 +108,10 @@ button:hover {
 .landing-subtitle {
     font-size: 1.5rem;
     font-weight: 400;
+    margin-top: 0.6rem;
 }
 .register-button {
-    margin-top: 0.5rem;
+    margin-top: 2rem;
     width: 15rem;
 }
 .signin-button {
@@ -103,14 +121,6 @@ button:hover {
     /* float: right; */
 
     padding: 0.625rem 1.25rem;
-}
-.no-link-styling {
-    text-decoration: none;
-    color: inherit;
-    transition: color 250ms ease-in-out;
-}
-.no-link-styling:hover {
-    color: #808080;
 }
 
 /* REGISTRATION */
@@ -123,6 +133,7 @@ button:hover {
     left: 90%; */
 }
 .registration-form {
+    border-radius: 10px;
     margin-left: 400px;
     width: 500px;
     height: 493px;
@@ -145,6 +156,9 @@ button:hover {
 }
 .login-btn {
     margin-top: 2rem;
+}
+.login-offer {
+    margin-top: 2.7rem;
 }
 input {
     width: 250px;
@@ -377,7 +391,7 @@ svg {
 /* FAVORITES  */
 .favorite-heart {
     margin-left: 3rem;
-   
+
     position: relative;
     top: 10px;
     cursor: pointer;

@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
 import axios from "../axios";
+import Welcome from "../welcome";
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -8,6 +9,11 @@ export default class Login extends React.Component {
         this.state = {};
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
+    }
+
+    componentWillMount() {
+        let landingGreeting = document.getElementById("landing-greeting");
+        landingGreeting.style.display = "none";
     }
 
     handleChange(e) {
@@ -64,10 +70,11 @@ export default class Login extends React.Component {
                         </button>
                         <Link
                             to="/register"
-                            className="register-offer no-link-styling"
+                            className="register-offer no-link-styling red"
                             id="back-register-link"
                         >
-                            Back to Registration
+                            Register first? <br />
+                            Back to <span>Registration</span>
                         </Link>
                     </div>
                 </div>

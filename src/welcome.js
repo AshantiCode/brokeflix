@@ -11,7 +11,7 @@ export default function Welcome() {
         <div className="landing-background-image">
             <HashRouter>
                 <section className="wrapper">
-                    <a href="#">
+                    <a href="/">
                         <img
                             src="https://fontmeme.com/permalink/190218/69c7fd6e696a0cbacc1bb2f2f04beb57.png"
                             alt="Brokeflix Logo"
@@ -19,11 +19,11 @@ export default function Welcome() {
                             className="logo"
                         />
                     </a>
-                    <Link to="/login">
+                    {/* <Link to="/login">
                         <button className="signin-button" id="sign-in-btn">
                             Sign In
                         </button>
-                    </Link>
+                    </Link> */}
                     <div className="landing-wrapper">
                         <div
                             style={{ display: "block" }}
@@ -40,6 +40,14 @@ export default function Welcome() {
                                 <button className="register-button uppercase">
                                     Join now{" "}
                                 </button>{" "}
+                            </Link>
+                            <Link to="/login">
+                                <button
+                                    className="signin-button"
+                                    id="sign-in-btn"
+                                >
+                                    Sign In
+                                </button>
                             </Link>
                         </div>
                         <div>
