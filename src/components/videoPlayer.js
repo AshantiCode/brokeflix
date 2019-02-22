@@ -44,6 +44,3 @@ export default class VideoPlayer extends React.Component {
         );
     }
 }
-
-// return <ReactPlayer url={this.props.playerUrl} />;
-// src = "http://www.youtube.com/embed/0chL5b-Wjbs?autoplay=1&origin=http://example.com"

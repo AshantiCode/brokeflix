@@ -59,20 +59,21 @@ export default class App extends React.Component {
                                     category={"Comedy"}
                                 />
 
-                                {/* <Teaser 
-                                setPlayerUrl={this.setPlayerUrl} 
-                                genre={"full movie romance"} 
-                                category={"Romance"} 
+                                <Teaser
+                                    setPlayerUrl={this.setPlayerUrl}
+                                    genre={"full movie romance"}
+                                    category={"Romance"}
                                 />
-                                <Teaser 
-                                setPlayerUrl={this.setPlayerUrl}
-                                genre={"full movie for kids"}
-                                category={"For Kids"}
+                                <Teaser
+                                    setPlayerUrl={this.setPlayerUrl}
+                                    genre={"full movie for kids"}
+                                    category={"For Kids"}
                                 />
-                                <Teaser 
-                                setPlayerUrl={this.setPlayerUrl} 
-                                genre={"full movie family"} 
-                                category={"Family"} />  */}
+                                <Teaser
+                                    setPlayerUrl={this.setPlayerUrl}
+                                    genre={"full movie family"}
+                                    category={"Family"}
+                                />
                             </div>
                         )}
                     />

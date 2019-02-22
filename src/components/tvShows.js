@@ -43,7 +43,7 @@ export default class TvShows extends React.Component {
                 return show;
             }
         });
-        console.log("New Movie: ", newshows);
+        console.log("New Movie: ", newShows);
         this.setState({
             shows: newShows,
             favoriteMovie: movieTitle,
@@ -79,9 +79,10 @@ export default class TvShows extends React.Component {
                     return (
                         <div key={show.id} className="item-card">
                             <img src={`${baseUrl}${show.poster_path}`} />
-                            <div className="item-details">
+                            <div className="item-details" id="heart-container">
                                 <h2 className="item-title">{show.name}</h2>
                                 <Heart
+                                    id="favorite-heart-shows"
                                     addToFavorite={this.addToFavorite}
                                     movieId={show.id}
                                     movieTitle={show.name}
@@ -92,7 +93,7 @@ export default class TvShows extends React.Component {
                                     {show.overview}
                                 </p>
                                 <p className="item-voting">
-                                    Rating: {show.vote_average}
+                                    Rating: <span>{show.vote_average}</span>
                                 </p>
                             </div>
                         </div>

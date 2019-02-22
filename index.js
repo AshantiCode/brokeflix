@@ -80,35 +80,39 @@ app.post("/welcome/register", function(req, res) {
 
 // LOGIN
 app.post("/welcome/login", function(req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+    if (!req.body.email || !req.body.password) {
+        res.json({ success: false });
+    } else {
+        const email = req.body.email;
+        const password = req.body.password;
 
-    db.getUserByEmail(email).then(dbData => {
-        // console.log("dbData: ", dbData.rows);
-        const hashedPass = dbData.rows[0].hashedpass;
+        db.getUserByEmail(email).then(dbData => {
+            // console.log("dbData: ", dbData.rows);
+            const hashedPass = dbData.rows[0].hashedpass;
 
-        req.session.userId = dbData.rows[0].id;
-        req.session.name = `${dbData.rows[0].first} ${dbData.rows[0].last}`;
+            req.session.userId = dbData.rows[0].id;
+            req.session.name = `${dbData.rows[0].first} ${dbData.rows[0].last}`;
 
-        // check password
-        return bcrypt
-            .comparePassword(password, hashedPass)
-            .then(bool => {
-                if (bool) {
-                    res.json({
-                        success: true
-                    });
-                } else {
-                    req.session = null;
-                    res.json({
-                        success: false
-                    });
-                }
-            })
-            .catch(error => {
-                console.log(error.message);
-            });
-    });
+            // check password
+            return bcrypt
+                .comparePassword(password, hashedPass)
+                .then(bool => {
+                    if (bool) {
+                        res.json({
+                            success: true
+                        });
+                    } else {
+                        req.session = null;
+                        res.json({
+                            success: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error.message);
+                });
+        });
+    }
 });
 
 // ADD FAVORITE MOVIES

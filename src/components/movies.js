@@ -81,7 +81,6 @@ export default class Movies extends React.Component {
                         <div className="item-card">
                             <img src={`${baseUrl}${movie.poster_path}`} />
                             <div className="item-details">
-                                <h2 className="item-title">{movie.title}</h2>
                                 <Heart
                                     addToFavorite={this.addToFavorite}
                                     movieId={movie.id}
@@ -89,11 +88,13 @@ export default class Movies extends React.Component {
                                     imgUrl={movie.poster_path}
                                     favorite={movie.favorite}
                                 />
+                                <h2 className="item-title">{movie.title}</h2>
+
                                 <p className="item-description">
                                     {movie.overview}
                                 </p>
                                 <p className="item-voting">
-                                    Rating: {movie.vote_average}
+                                    Rating: <span>{movie.vote_average}</span>
                                 </p>
                             </div>
                         </div>

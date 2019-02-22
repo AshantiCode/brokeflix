@@ -90,6 +90,7 @@ export default class Registration extends React.Component {
 
                         <label htmlFor="password">Password</label>
                         <input
+                            type="password"
                             name="password"
                             id="password"
                             onChange={this.handleChange}

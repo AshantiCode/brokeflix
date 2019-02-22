@@ -6,7 +6,9 @@ import Welcome from "../welcome";
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            error: ""
+        };
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
     }
@@ -60,6 +62,7 @@ export default class Login extends React.Component {
 
                         <label htmlFor="password">Password</label>
                         <input
+                            type="password"
                             name="password"
                             id="password"
                             onChange={this.handleChange}

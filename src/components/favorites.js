@@ -42,8 +42,11 @@ export default class Favorites extends React.Component {
                 {favorites.map(favorite => {
                     return (
                         <div className="favorite-item">
-                            <img src={`${baseUrl}${favorite.image}`} />
-                            <p>{favorite.title}</p>
+                            <img
+                                className="favorite-image"
+                                src={`${baseUrl}${favorite.image}`}
+                            />
+                            <p className="favorite-title">{favorite.title}</p>
                         </div>
                     );
                 })}
