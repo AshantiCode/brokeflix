@@ -9,7 +9,7 @@ export default class Movies extends React.Component {
             movies: []
         };
 
-        this.getMovies = this.getMovies.bind(this);
+        // this.getMovies = this.getMovies.bind(this);
         // this.toggleFavorite = this.toggleFavorite.bind(this);
         this.addToFavorite = this.addToFavorite.bind(this);
         this.saveFavorite = this.saveFavorite.bind(this);
@@ -93,7 +93,7 @@ export default class Movies extends React.Component {
                                     {movie.overview}
                                 </p>
                                 <p className="item-voting">
-                                    {movie.vote_average}
+                                    Rating: {movie.vote_average}
                                 </p>
                             </div>
                         </div>

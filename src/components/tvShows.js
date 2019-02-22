@@ -1,19 +1,21 @@
 import React from "react";
 import axios from "../axios";
 import Movies from "./movies";
+import Heart from "./heart";
 
 export default class TvShows extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            shows: [],
-            video: "",
-            favorte: false
+            shows: []
         };
+        this.getTvShows = this.getTvShows.bind(this);
+        this.addToFavorite = this.addToFavorite.bind(this);
+        this.saveFavorite = this.saveFavorite.bind(this);
     }
 
     componentDidMount() {
-        // this.getTvShows();
+        this.getTvShows();
     }
 
     async getTvShows() {
@@ -26,6 +28,38 @@ export default class TvShows extends React.Component {
             this.setState({
                 shows
             });
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    addToFavorite(movieTitle, movieId, imgUrl) {
+        let newShows = this.state.shows.map(show => {
+            if (show.id == movieId) {
+                console.log("I am Running!");
+                show.favorite = true;
+                return show;
+            } else {
+                return show;
+            }
+        });
+        console.log("New Movie: ", newshows);
+        this.setState({
+            shows: newShows,
+            favoriteMovie: movieTitle,
+            favoriteMovieImgUrl: imgUrl
+        });
+
+        this.saveFavorite();
+    }
+
+    async saveFavorite() {
+        try {
+            const response = await axios.post("/user/favorites", {
+                favoriteMovie: this.state.favoriteMovie,
+                favoriteMovieImgUrl: this.state.favoriteMovieImgUrl
+            });
+            console.log("response Love:", response);
         } catch (error) {
             console.log(error.message);
         }
@@ -47,11 +81,18 @@ export default class TvShows extends React.Component {
                             <img src={`${baseUrl}${show.poster_path}`} />
                             <div className="item-details">
                                 <h2 className="item-title">{show.name}</h2>
+                                <Heart
+                                    addToFavorite={this.addToFavorite}
+                                    movieId={show.id}
+                                    movieTitle={show.name}
+                                    imgUrl={show.poster_path}
+                                    favorite={show.favorite}
+                                />
                                 <p className="item-description">
                                     {show.overview}
                                 </p>
                                 <p className="item-voting">
-                                    {show.vote_average}
+                                    Rating: {show.vote_average}
                                 </p>
                             </div>
                         </div>
