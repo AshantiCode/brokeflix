@@ -24,3 +24,23 @@ module.exports.registerUser = (first, last, email, hashedPass) => {
 module.exports.getUserByEmail = email => {
     return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
+
+// ADD FAVORITE MOVIE
+module.exports.addFavoriteMovies = (userId, movie, image) => {
+    return db.query(
+        `INSERT INTO favorites (user_id, movie_title, image_url) VALUES ($1, $2, $3) `,
+        [userId, movie, image]
+    );
+};
+
+//GET FAVORITE MOVIES
+module.exports.getFavoriteMovies = userId => {
+    return db.query(
+        `SELECT favorites.movie_title as title, favorites.image_url as image 
+        FROM favorites 
+        LEFT JOIN users
+        ON favorites.user_id = users.id
+        WHERE users.id = $1`,
+        [userId]
+    );
+};

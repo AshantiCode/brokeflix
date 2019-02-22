@@ -6,8 +6,9 @@ export default class TvShows extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            shows: []
-            
+            shows: [],
+            video: "",
+            favorte: false
         };
     }
 
@@ -31,8 +32,6 @@ export default class TvShows extends React.Component {
     }
 
     render() {
-        
-
         if (this.state.shows.length < 1) {
             return null;
         }
@@ -51,7 +50,9 @@ export default class TvShows extends React.Component {
                                 <p className="item-description">
                                     {show.overview}
                                 </p>
-                                <p className='item-voting'>{show.vote_average}</p>
+                                <p className="item-voting">
+                                    {show.vote_average}
+                                </p>
                             </div>
                         </div>
                     );

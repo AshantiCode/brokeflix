@@ -47,7 +47,6 @@ export default function Header(props) {
                                 Favorites
                             </Link>
                         </li>
-                        
                     </ul>
                 </nav>
 

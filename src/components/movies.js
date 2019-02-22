@@ -16,7 +16,7 @@ export default class Movies extends React.Component {
     }
 
     componentDidMount() {
-        // this.getMovies();
+        this.getMovies();
     }
 
     async getMovies() {
@@ -29,24 +29,37 @@ export default class Movies extends React.Component {
             this.setState({
                 movies
             });
+            console.log("State Movies:", this.state.movies);
         } catch (error) {
             console.log(error.message);
         }
     }
 
-    addToFavorite(video) {
+    addToFavorite(movieTitle, movieId, imgUrl) {
+        let newMovies = this.state.movies.map(movie => {
+            if (movie.id == movieId) {
+                console.log("I am Running!");
+                movie.favorite = true;
+                return movie;
+            } else {
+                return movie;
+            }
+        });
+        console.log("New Movie: ", newMovies);
         this.setState({
-            video,
-            favorite: !this.state.favorite
+            movies: newMovies,
+            favoriteMovie: movieTitle,
+            favoriteMovieImgUrl: imgUrl
         });
 
-        this.saveFavorite(video);
+        this.saveFavorite();
     }
 
     async saveFavorite() {
         try {
             const response = await axios.post("/user/favorites", {
-                video: this.state.video
+                favoriteMovie: this.state.favoriteMovie,
+                favoriteMovieImgUrl: this.state.favoriteMovieImgUrl
             });
             console.log("response Love:", response);
         } catch (error) {
@@ -65,13 +78,16 @@ export default class Movies extends React.Component {
             <div>
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} className="item-card">
+                        <div className="item-card">
                             <img src={`${baseUrl}${movie.poster_path}`} />
                             <div className="item-details">
                                 <h2 className="item-title">{movie.title}</h2>
                                 <Heart
-                                    onClick={this.addToFavorite(movie.id)}
-                                    favorite={this.state.favorite}
+                                    addToFavorite={this.addToFavorite}
+                                    movieId={movie.id}
+                                    movieTitle={movie.title}
+                                    imgUrl={movie.poster_path}
+                                    favorite={movie.favorite}
                                 />
                                 <p className="item-description">
                                     {movie.overview}

@@ -8,10 +8,17 @@ export default function Heart(props) {
     } else {
         pic = "./assets/heart-empty.png";
     }
+
     return (
         <img
             src={pic}
-            // onClick={props.addToFavorite}
+            onClick={() =>
+                props.addToFavorite(
+                    props.movieTitle,
+                    props.movieId,
+                    props.imgUrl
+                )
+            }
             className="favorite-heart"
         />
     );

@@ -111,8 +111,32 @@ app.post("/welcome/login", function(req, res) {
     });
 });
 
+// ADD FAVORITE MOVIES
 app.post("/user/favorites", function(req, res) {
     console.log("Req.Body in Favorites:", req.body);
+    // if(req.body.movie.favorite) {
+    //     db.deleteFavoritMovie(movieTitle,imgUrl)
+    // }
+    const userId = req.session.userId;
+    const movie = req.body.favoriteMovie;
+    const imgUrl = req.body.favoriteMovieImgUrl;
+    db.addFavoriteMovies(userId, movie, imgUrl);
+    console.log("Added To Databse");
+});
+
+// GET FAVORITE MOVIES
+app.get("/user/favorites", function(req, res) {
+    const userId = req.session.userId;
+    db.getFavoriteMovies(userId).then(dbData => {
+        console.log("dbData.rows.[0]:", dbData.rows[0]);
+
+        let favorites = dbData.rows.filter(favorite => {
+            return favorite.title != null && favorite.image != null;
+        });
+        res.json({
+            favorites
+        });
+    });
 });
 
 // LOGOUT

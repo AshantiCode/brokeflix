@@ -6,6 +6,7 @@ import VideoPlayer from "./components/videoPlayer";
 import Movies from "./components/movies";
 import TvShows from "./components/tvShows";
 import Heart from "./components/heart";
+import Favorites from "./components/favorites";
 
 import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 
@@ -92,6 +93,7 @@ export default class App extends React.Component {
 
                     <Route exact path="/movies" component={Movies} />
                     <Route exact path="/shows" component={TvShows} />
+                    <Route exact path="/favorites" component={Favorites} />
                 </div>
             </BrowserRouter>
         );
