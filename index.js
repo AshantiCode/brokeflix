@@ -118,9 +118,7 @@ app.post("/welcome/login", function(req, res) {
 // ADD FAVORITE MOVIES
 app.post("/user/favorites", function(req, res) {
     console.log("Req.Body in Favorites:", req.body);
-    // if(req.body.movie.favorite) {
-    //     db.deleteFavoritMovie(movieTitle,imgUrl)
-    // }
+
     const userId = req.session.userId;
     const movie = req.body.favoriteMovie;
     const imgUrl = req.body.favoriteMovieImgUrl;
